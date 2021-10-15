@@ -4,14 +4,16 @@ set -eux
 set -o pipefail
 
 #build rust program
-npm run build:program-rust
+cd src/program-rust
+
+cargo build-bpf
 
 # deploy program
-solana program deploy dist/program/kyc.so
+solana program deploy target/deploy/kyc.so
 
 # install client npm dependencies
 
-npm install --save
+#npm install --save
 
 
 

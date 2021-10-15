@@ -151,6 +151,7 @@ export async function checkProgram(): Promise<void> {
 
   // Check if the program has been deployed
   const programInfo = await connection.getAccountInfo(programId);
+  console.log(" programInfo ",programInfo);
   if (programInfo === null) {
     if (fs.existsSync(PROGRAM_SO_PATH)) {
       throw new Error(
@@ -165,7 +166,7 @@ export async function checkProgram(): Promise<void> {
   console.log(`Using program ${programId.toBase58()}`);
 
   // Derive the address (public key) of a kyc account from the program so that it's easy to find later.
-  const KYC_SEED = 'kyc';
+  const KYC_SEED = 'psbabu007@gmail.com';
   kycPubkey = await PublicKey.createWithSeed(
     payer.publicKey,
     KYC_SEED,
